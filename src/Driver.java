@@ -11,7 +11,7 @@ public class Driver {
 
   public static void main(String[] args)
   {
-	  System.out.println("Welcome to Blibibliography Factory !!!");
+	  System.out.println("Welcome to Blibibliography Factory !!!\n");
 	  processbegins();
   }
   
@@ -23,10 +23,14 @@ public class Driver {
   {
 	 String path="C:\\Users\\lenovo\\Desktop\\Files-249\\Latex"; 
 	 
-	 for (int i=1; i<=10; ++i)
+	 for (int i=1; i<=1; ++i)
 	 {
 	  
 	    Scanner File=  existfile(path+i);
+	    
+	    if (!valid(File))
+	     System.exit(0);
+	    
 	    PrintWriter iee=createfiles(path,"IEEE"+i+".json");
 	    PrintWriter acm=createfiles(path,"ACM"+i+".json");
 	    PrintWriter nj=createfiles(path,"NJ"+i+".json");
@@ -87,5 +91,33 @@ public class Driver {
 	   
    }
    
+   
+   public static boolean valid(Scanner file)
+   {
+	  boolean flag=false; 
+	  int temp=0;
+	  
+	  while (file.hasNextLine())
+	  {
+		 if (file.nextLine().equals("@ARTICLE{"))
+		  continue;
+		 
+		// if (file.nextLine().equals("}"))
+		 // file.nextLine();
+		 
+			 /* while (file.hasNextLine())
+		  {
+            file.nextLine();
+            
+            if (++temp==2)
+             break; 	
+		  }
+		 */
+		 System.out.println(file.nextLine());
+	  }	  
+	  
+	  
+	  return flag;
+   }
   
 }
